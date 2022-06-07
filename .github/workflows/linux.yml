@@ -25,14 +25,15 @@ jobs:
       - run: |
              pwd
              ls -la
+             chmod +x scripts/gitlab-ci/before_script.sh
              bash scripts/gitlab-ci/before_script.sh
              
 
-      - run: ls && pwd  && cd scripts
+   #   - run: ls && pwd  && cd scripts
       #- run: /scripts/gitlab-ci/before_script.sh
-      - run: ls
-      - run: cd scripts
-      - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_editor.sh" 
-      - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_templates.sh debug"
-      - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_templates.sh release"
+    #  - run: ls
+    #  - run: cd scripts
+   #   - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_editor.sh" 
+   #   - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_templates.sh debug"
+  #    - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_templates.sh release"
 
