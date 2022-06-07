@@ -17,6 +17,7 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - run: ls && pwd 
       - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/before_script.sh"
       - run: cd "godot/"
       - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_editor.sh" 
