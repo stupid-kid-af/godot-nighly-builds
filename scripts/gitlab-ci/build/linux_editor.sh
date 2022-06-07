@@ -26,6 +26,8 @@ scons platform=linuxbsd tools=yes target=debug \
 cd bin/
 mv "godot.linuxbsd.tools.64" "godot"
 cd ..
-zip -r9 "editor/godot-linux-nightly-x86_64.zip" "godot"
+#zip -r9 "editor/godot-linux-nightly-x86_64.zip" "godot"
+ls
+zip -r9 editor/godot-linux-nightly-x86_64.zip . -i godot
 
 make_manifest "$ARTIFACTS_DIR/editor/godot-linux-nightly-x86_64.zip"
