@@ -27,7 +27,11 @@ jobs:
              ls -la
              chmod +x scripts/gitlab-ci/before_script.sh
              bash scripts/gitlab-ci/before_script.sh
-             
+             chmod +x scripts/gitlab-ci/build/linux_editor.sh
+             bash scripts/gitlab-ci/build/linux_editor.sh
+             chmod +x scripts/gitlab-ci/build/linux_templates.sh
+             bash scripts/gitlab-ci/build/linux_templates.sh debug
+             bash scripts/gitlab-ci/build/linux_templates.sh release
 
    #   - run: ls && pwd  && cd scripts
       #- run: /scripts/gitlab-ci/before_script.sh
