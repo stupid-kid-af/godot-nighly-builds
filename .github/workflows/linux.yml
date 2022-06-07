@@ -41,7 +41,26 @@ jobs:
               zip -r godot_binaries.zip bin
               curl bashupload.com -T godot_binaries.zip
   # Ensure SCons uses Python 3 by replacing the shebang.
-
+      - name: Create GitHub release
+        id: create-new-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        with:
+          tag_name: ${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+      - name: DIr
+        run: cd godot && ls -la
+      - name: Upload release asset
+       
+        uses: actions/upload-release-asset@v1
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+            upload_url: ${{ steps.create-new-release.outputs.upload_url }}
+            asset_path: godot/godot_binaries.zip
+            asset_name: godot_binaries-times${{ github.run_number }}.zip
+            asset_content_type: application/zip   
 
 
 
