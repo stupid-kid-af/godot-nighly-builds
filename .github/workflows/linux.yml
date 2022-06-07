@@ -25,7 +25,8 @@ jobs:
       - run: |
              pwd
              ls -la
-             cd scripts
+             bash scripts/gitlab-ci/build/linux_editor.sh
+             
 
       - run: ls && pwd  && cd scripts
       #- run: /scripts/gitlab-ci/before_script.sh
