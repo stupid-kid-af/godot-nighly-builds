@@ -22,8 +22,8 @@ if [[ -f "/etc/redhat-release" ]]; then
       zip unzip ncurses-compat-libs wine xz lbzip2 libXi-devel python
 else
   # Ubuntu
-  apt-get update -qq
-  apt-get install -qqq software-properties-common
+  sudo apt-get update -qq
+  sudo apt-get install -qqq software-properties-common
   add-apt-repository -y ppa:ubuntu-toolchain-r/test
   apt-get update -qq
 
