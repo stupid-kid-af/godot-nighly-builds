@@ -1,0 +1,70 @@
+
+.retry: &retry
+  max: 2
+  when:
+    - api_failure
+    - runner_system_failure
+    - stuck_or_timeout_failure
+    - unknown_failure
+
+.artifacts: &artifacts
+  paths:
+    - artifacts/
+  expire_in: 1 week
+
+stages:
+  - build
+  - deploy
+
+variables:
+  # The build name to use instead of "custom_build"
+  # This helps people identify where the build comes from
+  BUILD_NAME: calinou
+  # The number of CPU threads to use for compiling Godot
+  BUILD_THREADS: "1"
+  # SCons build flags to use for all platforms
+  SCONS_FLAGS: '("progress=no" "warnings=no" "werror=no" "-j$BUILD_THREADS")'
+  # The Godot Git repository clone URL
+  GODOT_REPO_URL: https://github.com/godotengine/godot.git
+  # The Godot Git repository clone branch
+  GODOT_REPO_BRANCH: master
+
+before_script:
+  - "$CI_PROJECT_DIR/scripts/gitlab-ci/before_script.sh"
+  - cd "godot/"
+
+# Linux editor
+# Built on Ubuntu 18.04 so that binaries run on old distributions as well
+build:linux_editor:
+  stage: build
+  image: ubuntu:18.04
+  variables:
+    DEBIAN_FRONTEND: noninteractive
+  script:
+    - "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_editor.sh"
+  artifacts: *artifacts
+  retry: *retry
+
+# Linux export templates (debug)
+# Built on Ubuntu 18.04 so that binaries run on old distributions as well
+build:linux_templates_debug:
+  stage: build
+  image: ubuntu:18.04
+  variables:
+    DEBIAN_FRONTEND: noninteractive
+  script:
+    - "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_templates.sh debug"
+  artifacts: *artifacts
+  retry: *retry
+
+# Linux export templates (release)
+# Built on Ubuntu 18.04 so that binaries run on old distributions as well
+build:linux_templates_release:
+  stage: build
+  image: ubuntu:18.04
+  variables:
+    DEBIAN_FRONTEND: noninteractive
+  script:
+    - "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_templates.sh release"
+  artifacts: *artifacts
+  retry: *retry
