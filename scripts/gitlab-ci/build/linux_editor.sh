@@ -27,4 +27,4 @@ cd bin/
 mv "godot.linuxbsd.tools.64" "godot"
 zip -r9 "editor/godot-linux-nightly-x86_64.zip" "godot"
 
-make_manifest "$ARTIFACTS_DIR/editor/godot-linux-nightly-x86_64.zip"
+make_manifest "editor/godot-linux-nightly-x86_64.zip"
