@@ -1,12 +1,23 @@
 name: linux
 on: push
   # The build name to use instead of "custom_build"
-
+env:
+  # This helps people identify where the build comes from
+  BUILD_NAME: calinou
+  # The number of CPU threads to use for compiling Godot
+  BUILD_THREADS: "1"
+  # SCons build flags to use for all platforms
+  SCONS_FLAGS: '("progress=no" "warnings=no" "werror=no" "-j$BUILD_THREADS")'
+  # The Godot Git repository clone URL
+  GODOT_REPO_URL: https://github.com/godotengine/godot.git
+  # The Godot Git repository clone branch
+  GODOT_REPO_BRANCH: master
+  DEBIAN_FRONTEND: noninteractive
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: ls && pwd 
+      - run: ls && pwd  && cd scripts
       #- run: /scripts/gitlab-ci/before_script.sh
       - run: ls
       - run: cd scripts
