@@ -6,8 +6,8 @@
 # This script is always sourced before any other script
 
 # The directory where build artifacts are stored
-sudo export ARTIFACTS_DIR
-sudo ARTIFACTS_DIR="artifacts"
+export ARTIFACTS_DIR
+ARTIFACTS_DIR="artifacts"
 
 # The directory the Godot Git repository will be cloned into
 export GODOT_DIR
