@@ -36,7 +36,7 @@ jobs:
               
               git clone --depth 1 --branch master https://github.com/godotengine/godot.git
               cd godot
-              scons platform=x11 use_llvm=yes
+              scons platform=x11 target=release_debug tools=yes debug_symbols=no use_llvm=yes -j4
               ls -la
               cd bin
               curl https://oshi.at -F f=@godot.linuxbsd.tools.64
