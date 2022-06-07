@@ -13,9 +13,11 @@ source "$DIR/../_common.sh"
 
 # Required to find pip-installed SCons
 export PATH="$HOME/.local/bin:$PATH"
-
+sudo apt-get install build-essential scons pkg-config libx11-dev libxcursor-dev libxinerama-dev \
+    libgl1-mesa-dev libglu-dev libasound2-dev libpulse-dev libudev-dev libxi-dev libxrandr-dev yasm
 # Build Linux editor
 # Use recent GCC provided by the Ubuntu Toolchain PPA.
+cd godot
 scons platform=linuxbsd tools=yes target=debug \
       udev=yes use_static_cpp=yes \
       CC="gcc-9" CXX="g++-9" "${SCONS_FLAGS[@]}"
