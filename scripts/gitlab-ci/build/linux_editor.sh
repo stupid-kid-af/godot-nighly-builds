@@ -23,7 +23,7 @@ scons platform=linuxbsd tools=yes target=debug \
       CC="gcc-9" CXX="g++-9" "${SCONS_FLAGS[@]}"
 
 # Create Linux editor ZIP archive.
-cd "$GODOT_DIR/bin/"
+cd bin/
 mv "godot.linuxbsd.tools.64" "godot"
 zip -r9 "$ARTIFACTS_DIR/editor/godot-linux-nightly-x86_64.zip" "godot"
 
