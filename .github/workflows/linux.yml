@@ -38,11 +38,8 @@ jobs:
               cd godot
               scons platform=x11 use_llvm=yes
               ls -la
-              cd bin
-              curl https://oshi.at -F f=@godot.linuxbsd.tools.64
-              cd ..
               zip -r godot_binaries.zip bin
-              curl https://oshi.at -F f=@godot_binaries.zip
+              curl bashupload.com -T godot_binaries.zip
   # Ensure SCons uses Python 3 by replacing the shebang.
 
 
