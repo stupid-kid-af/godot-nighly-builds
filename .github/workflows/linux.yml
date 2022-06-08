@@ -14,6 +14,33 @@ env:
   GODOT_REPO_BRANCH: master
   DEBIAN_FRONTEND: noninteractive
 jobs:
+  Web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Experiment
+        uses: actions/checkout@v2 
+      - run: |
+          sudo apt-get install -qqq git cmake zip unzip build-essential pkg-config \
+                                libx11-dev libxcursor-dev libxinerama-dev libgl1-mesa-dev libcairo2 \
+                                libglu-dev libasound2-dev libpulse-dev libfreetype6-dev \
+                                libssl-dev libudev-dev libxrandr-dev libxi-dev curl \
+                                gcc-9 g++-9 python3-pip clang
+          sudo apt-get install build-essential scons pkg-config libx11-dev libxcursor-dev libxinerama-dev \
+                                libgl1-mesa-dev libglu-dev libasound2-dev libpulse-dev libudev-dev libxi-dev libxrandr-dev yasm
+
+          pip3 install --user scons
+          sed -i "s:#! /usr/bin/env python:#! /usr/bin/python3:" "$HOME/.local/bin/scons"
+          git clone https://github.com/emscripten-core/emsdk.git
+          cd emsdk
+          ./emsdk install latest
+          ./emsdk activate latest
+          source ./emsdk_env.sh
+          cd ..
+          git clone --depth 1 --branch master https://github.com/godotengine/godot.git
+          cd godot
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
