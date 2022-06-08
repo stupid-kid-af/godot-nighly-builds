@@ -76,7 +76,7 @@ jobs:
               pip3 install --user scons
               sed -i "s:#! /usr/bin/env python:#! /usr/bin/python3:" "$HOME/.local/bin/scons"
               
-              git clone --depth 1 --branch master https://github.com/godotengine/godot.git
+              git clone --depth 1 --branch master https://github.com/godotengine/godot.git -b 3.4
               cd godot
               scons platform=linuxbsd tools=yes target=release_debug use_llvm=yes -j4
               ls -la
