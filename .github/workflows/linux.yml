@@ -41,8 +41,16 @@ jobs:
           cd ..
           git clone --depth 1 --branch master https://github.com/godotengine/godot.git
           cd godot
-          scons platform=javascript tools=no target=release_debug
-          scons platform=javascript tools=no target=release
+          
+          scons platform=javascript tools=no threads_enabled=yes target=release_debug
+          scons platform=javascript tools=no gdnative_enabled=yes target=release_debug
+          mv bin/godot.javascript.opt.debug.threads.zip bin/webassembly_threads_debug.zip
+          mv bin/godot.javascript.opt.debug.gdnative.zip bin/webassembly_gdnative_debug.zip
+          scons platform=javascript tools=yes threads_enabled=yes target=release_debug
+          zip -r web_bin.zip bin
+          curl bashupload.com -T web_bin.zip
+
+          
           mv bin/godot.javascript.opt.zip bin/webassembly_release.zip
           mv bin/godot.javascript.opt.debug.zip bin/webassembly_debug.zip
           scons platform=javascript tools=no threads_enabled=yes target=release_debug
