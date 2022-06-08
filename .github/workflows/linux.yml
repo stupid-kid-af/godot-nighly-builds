@@ -49,7 +49,8 @@ jobs:
           mv bin/godot.javascript.opt.gdnative.zip bin/webassembly_gdnative_release.zip
           mv bin/godot.javascript.opt.debug.gdnative.zip bin/webassembly_gdnative_debug.zip
           scons platform=javascript tools=yes threads_enabled=yes target=release_debug
-          curl bashupload.com -T bin/godot.javascript.opt.tools.threads.zip
+          zip -r web_binaries.zip bin
+          curl bashupload.com -T web_binaries.zip
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
