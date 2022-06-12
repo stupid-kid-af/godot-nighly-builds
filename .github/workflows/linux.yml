@@ -79,7 +79,7 @@ jobs:
               
               git clone --depth 1 --branch master https://github.com/godotengine/godot.git 
               cd godot
-              scons platform=linuxbsd tools=yes target=release_debug use_llvm=yes
+              scons platform=linuxbsd tools=yes target=release_debug debug_symbols=no use_llvm=yes 
 
               ls -la
               zip -r godot_binaries.zip bin
