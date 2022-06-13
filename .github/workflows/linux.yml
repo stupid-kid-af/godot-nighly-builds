@@ -87,6 +87,7 @@ jobs:
               cd bin
               git clone https://github.com/stupid-kid-af/appimage
               cd appimage
+              chmod +x ./AppRun
               mkdir usr
               mkdir usr/bin
               cd ..
