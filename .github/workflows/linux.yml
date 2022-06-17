@@ -150,5 +150,3 @@ jobs:
    #   - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_editor.sh" 
    #   - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_templates.sh debug"
   #    - run: "$CI_PROJECT_DIR/scripts/gitlab-ci/build/linux_templates.sh release"
-
-
