@@ -1,4 +1,5 @@
 # godot-nighly-builds
+# mono builds will be added soon
   # Added AppImages (working)
 # Currently only Linux builds are passing and you can find those on release tab.
 # build every 1 hrs 
